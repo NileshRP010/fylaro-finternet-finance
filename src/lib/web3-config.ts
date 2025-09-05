@@ -1,6 +1,12 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { mainnet } from 'wagmi/chains';
 import { http } from 'viem';
+import { 
+  metaMaskWallet,
+  trustWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
 // Get project ID from environment variables or use a default one for development
 const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || '2f5a2f12b7b96c78f1a47e8ae2c5ce9a';
@@ -38,6 +44,17 @@ export const config = getDefaultConfig({
     [421614]: http('https://sepolia-rollup.arbitrum.io/rpc'),
     [1]: http(),
   },
+  wallets: [
+    {
+      groupName: 'Recommended',
+      wallets: [
+        metaMaskWallet,
+        trustWallet,
+        coinbaseWallet,
+        walletConnectWallet,
+      ],
+    },
+  ],
 });
 
 // Chain configurations for easy access
