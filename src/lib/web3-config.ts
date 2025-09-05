@@ -1,32 +1,28 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
-import { bsc, bscTestnet, mainnet } from 'wagmi/chains';
+import { mainnet } from 'wagmi/chains';
 import { http } from 'viem';
 
 // Get project ID from environment variables or use a default one for development
 const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || '2f5a2f12b7b96c78f1a47e8ae2c5ce9a';
 
+// Define Arbitrum Sepolia chain
+export const arbitrumSepolia = {
+  id: 421614,
+  name: 'Arbitrum Sepolia',
+  nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://sepolia-rollup.arbitrum.io/rpc'] },
+    public: { http: ['https://sepolia-rollup.arbitrum.io/rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'Arbiscan', url: 'https://sepolia.arbiscan.io' },
+  },
+  testnet: true,
+} as const;
+
 // Explicitly define chains to avoid any local network conflicts
 const productionChains = [
-  {
-    ...bsc,
-    id: 56,
-    name: 'BNB Smart Chain',
-    nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-    rpcUrls: {
-      default: { http: ['https://bsc-dataseed.binance.org'] },
-      public: { http: ['https://bsc-dataseed.binance.org'] },
-    },
-  },
-  {
-    ...bscTestnet,
-    id: 97,
-    name: 'BNB Smart Chain Testnet',
-    nativeCurrency: { name: 'tBNB', symbol: 'tBNB', decimals: 18 },
-    rpcUrls: {
-      default: { http: ['https://data-seed-prebsc-1-s1.binance.org:8545'] },
-      public: { http: ['https://data-seed-prebsc-1-s1.binance.org:8545'] },
-    },
-  },
+  arbitrumSepolia,
   mainnet,
 ] as const;
 
@@ -39,37 +35,26 @@ export const config = getDefaultConfig({
     multicall: true,
   },
   transports: {
-    [56]: http('https://bsc-dataseed.binance.org'),
-    [97]: http('https://data-seed-prebsc-1-s1.binance.org:8545'),
+    [421614]: http('https://sepolia-rollup.arbitrum.io/rpc'),
     [1]: http(),
   },
 });
 
 // Chain configurations for easy access
 export const supportedChains = {
-  bsc: {
-    id: 56,
-    name: 'BNB Smart Chain',
-    nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+  arbitrumSepolia: {
+    id: 421614,
+    name: 'Arbitrum Sepolia',
+    nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
     rpcUrls: {
-      default: { http: ['https://bsc-dataseed.binance.org'] },
+      default: { http: ['https://sepolia-rollup.arbitrum.io/rpc'] },
     },
     blockExplorers: {
-      default: { name: 'BSCScan', url: 'https://bscscan.com' },
+      default: { name: 'Arbiscan', url: 'https://sepolia.arbiscan.io' },
     },
-  },
-  bscTestnet: {
-    id: 97,
-    name: 'BNB Smart Chain Testnet',
-    nativeCurrency: { name: 'tBNB', symbol: 'tBNB', decimals: 18 },
-    rpcUrls: {
-      default: { http: ['https://data-seed-prebsc-1-s1.binance.org:8545'] },
-    },
-    blockExplorers: {
-      default: { name: 'BSCScan Testnet', url: 'https://testnet.bscscan.com' },
-    },
+    testnet: true,
   },
 } as const;
 
-// Default chain for the application (Binance Smart Chain)
-export const defaultChain = bsc;
+// Default chain for the application (Arbitrum Sepolia)
+export const defaultChain = arbitrumSepolia;

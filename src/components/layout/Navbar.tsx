@@ -28,8 +28,8 @@ const Navbar = () => {
     isConnecting, 
     disconnectWallet, 
     formatAddress,
-    isOnBSC,
-    switchToBSC 
+    isOnArbitrum,
+    switchToArbitrum 
   } = useWallet();
 
   // Keyboard shortcut for search (Ctrl+K or Cmd+K)
@@ -109,19 +109,19 @@ const Navbar = () => {
             {isConnected ? (
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
-                  {!isOnBSC && (
+                  {!isOnArbitrum && (
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={switchToBSC}
+                      onClick={switchToArbitrum}
                       className="border-warning/30 text-warning hover:bg-warning/10"
                     >
                       <AlertTriangle className="h-3 w-3 mr-1" />
-                      Switch to BSC
+                      Switch to Arbitrum
                     </Button>
                   )}
-                  <Badge className={`${isOnBSC ? 'bg-success/10 text-success border-success/30' : 'bg-warning/10 text-warning border-warning/30'} hidden lg:flex`}>
-                    {isOnBSC ? 'BSC Connected' : 'Wrong Network'}
+                  <Badge className={`${isOnArbitrum ? 'bg-success/10 text-success border-success/30' : 'bg-warning/10 text-warning border-warning/30'} hidden lg:flex`}>
+                    {isOnArbitrum ? 'Arbitrum Connected' : 'Wrong Network'}
                   </Badge>
                 </div>
                 <Button 

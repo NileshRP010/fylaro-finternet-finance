@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fylaro - Binance-inspired Design System */
+/* Fylaro - Arbitrum-inspired Design System */
 
 @layer base {
   :root {
@@ -54,11 +54,11 @@
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Binance Brand Colors */
-    --binance-yellow: #F0B90B;
-    --binance-yellow-dark: #D4A307;
-    --binance-black: #0B0E11;
-    --binance-gray: #2B3139;
+    /* Arbitrum Brand Colors */
+    --arbitrum-blue: #28A0F0;
+    --arbitrum-blue-dark: #1B6CA8;
+    --arbitrum-black: #0B0E11;
+    --arbitrum-gray: #2B3139;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;

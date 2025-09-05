@@ -48,13 +48,13 @@ export const WalletConnectModal = ({ isOpen, onClose }: WalletConnectModalProps)
   const getWalletDescription = (name: string) => {
     switch (name.toLowerCase()) {
       case 'metamask':
-        return 'Most popular wallet for Binance Smart Chain';
+        return 'Most popular wallet for Arbitrum';
       case 'walletconnect':
         return 'Connect with mobile wallets via QR code';
       case 'coinbase wallet':
         return 'Secure wallet by Coinbase';
       case 'trust wallet':
-        return 'Official Binance wallet with BSC support';
+        return 'Secure wallet with Arbitrum support';
       default:
         return 'Connect with your preferred wallet';
     }
@@ -78,7 +78,7 @@ export const WalletConnectModal = ({ isOpen, onClose }: WalletConnectModalProps)
           <div className="bg-muted/30 rounded-lg p-3 text-sm">
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Shield className="h-4 w-4" />
-              <span>Connect to Binance Smart Chain for the best experience</span>
+              <span>Connect to Arbitrum for the best experience</span>
             </div>
           </div>
 

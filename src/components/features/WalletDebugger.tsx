@@ -88,20 +88,19 @@ export const WalletDebugger = () => {
             <div>
               <div className="font-medium mb-1">Network</div>
               <div className="flex items-center space-x-2">
-                <Badge variant={chainId === 56 ? "default" : "destructive"}>
+                <Badge variant={chainId === 421614 ? "default" : "destructive"}>
                   Chain ID: {chainId || 'Unknown'}
                 </Badge>
-                {chainId !== 56 && chainId && (
+                {chainId !== 421614 && chainId && (
                   <AlertTriangle className="h-3 w-3 text-yellow-500" />
                 )}
               </div>
               <div className="text-xs text-muted-foreground mt-1">
-                {chainId === 56 && "Binance Smart Chain"}
-                {chainId === 97 && "BSC Testnet"}
+                {chainId === 42161 && "Arbitrum One"}
+                {chainId === 421614 && "Arbitrum Sepolia"}
                 {chainId === 1 && "Ethereum Mainnet"}
                 {chainId === 137 && "Polygon"}
-                {chainId === 42161 && "Arbitrum"}
-                {chainId && ![56, 97, 1, 137, 42161].includes(chainId) && "Unknown Network"}
+                {chainId && ![421614, 42161, 1, 137].includes(chainId) && "Unknown Network"}
               </div>
             </div>
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from 'wagmi';
-import { bsc } from 'wagmi/chains';
+import { arbitrumSepolia } from '../lib/web3-config';
 import { toast } from 'sonner';
 
 export interface WalletState {
@@ -35,7 +35,7 @@ export const useWallet = () => {
 
   const connectWallet = async () => {
     try {
-      // Get MetaMask connector (most common for BSC)
+      // Get MetaMask connector (most common for Arbitrum)
       const metamaskConnector = connectors.find(
         (connector) => connector.name === 'MetaMask'
       );
@@ -46,15 +46,15 @@ export const useWallet = () => {
         
         // Wait a bit for connection to establish
         setTimeout(async () => {
-          // Check if we need to switch to BSC
-          if (chainId && chainId !== bsc.id) {
+          // Check if we need to switch to Arbitrum Sepolia
+          if (chainId && chainId !== arbitrumSepolia.id) {
             try {
-              console.log('Switching to BSC from chain:', chainId);
-              await switchChain({ chainId: bsc.id });
-              toast.success('Switched to Binance Smart Chain');
+              console.log('Switching to Arbitrum Sepolia from chain:', chainId);
+              await switchChain({ chainId: arbitrumSepolia.id });
+              toast.success('Switched to Arbitrum Sepolia');
             } catch (switchError) {
               console.error('Switch chain error:', switchError);
-              toast.error('Please switch to Binance Smart Chain manually in your wallet');
+              toast.error('Please switch to Arbitrum Sepolia manually in your wallet');
             }
           }
         }, 1000);
@@ -86,13 +86,13 @@ export const useWallet = () => {
     }
   };
 
-  const switchToBSC = async () => {
+  const switchToArbitrum = async () => {
     try {
-      await switchChain({ chainId: bsc.id });
-      toast.success('Switched to Binance Smart Chain');
+      await switchChain({ chainId: arbitrumSepolia.id });
+      toast.success('Switched to Arbitrum Sepolia');
     } catch (error) {
       console.error('Failed to switch chain:', error);
-      toast.error('Failed to switch to Binance Smart Chain');
+      toast.error('Failed to switch to Arbitrum Sepolia');
     }
   };
 
@@ -101,15 +101,15 @@ export const useWallet = () => {
     return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
   };
 
-  const isOnBSC = chainId === bsc.id;
+  const isOnArbitrum = chainId === arbitrumSepolia.id;
 
   return {
     ...walletState,
     connectWallet,
     disconnectWallet,
-    switchToBSC,
+    switchToArbitrum,
     formatAddress,
-    isOnBSC,
+    isOnArbitrum,
     connectors,
   };
 };

@@ -40,7 +40,7 @@ const HelpPage = () => {
     {
       question: "How do I connect my crypto wallet?",
       answer:
-        "Click the 'Connect Wallet' button in the top navigation. We support MetaMask, WalletConnect, and other popular wallets. Make sure you're on the BSC (Binance Smart Chain) network for optimal functionality.",
+        "Click the 'Connect Wallet' button in the top navigation. We support MetaMask, WalletConnect, and other popular wallets. Make sure you're on the Arbitrum network for optimal functionality.",
     },
     {
       question: "What are the fees for using Fylaro?",

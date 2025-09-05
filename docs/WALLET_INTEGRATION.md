@@ -1,30 +1,28 @@
 # Wallet Integration Guide
 
 ## Overview
-The Fylaro Finternet Finance platform now includes full Web3 wallet integration with support for Binance Smart Chain (BSC) and other EVM-compatible networks.
+The Fylaro Finternet Finance platform now includes full Web3 wallet integration with support for Arbitrum and other EVM-compatible networks.
 
 ## Features
-- ✅ Multi-wallet support (MetaMask, Trust Wallet, WalletConnect, etc.)
-- ✅ Binance Smart Chain (BSC) integration
+- ✅ Multi-wallet support (MetaMask, WalletConnect, etc.)
+- ✅ Arbitrum Layer 2 integration
 - ✅ Automatic network switching
 - ✅ Custom wallet connection modal
 - ✅ Real-time connection status
 - ✅ Responsive design
 
 ## Supported Wallets
-1. **MetaMask** (Recommended for BSC)
-2. **Trust Wallet** (Official Binance wallet)
-3. **WalletConnect** (Mobile wallets via QR code)
-4. **Coinbase Wallet**
-5. **Rainbow Wallet**
-6. **Safe Wallet**
+1. **MetaMask** (Recommended for Arbitrum)
+2. **WalletConnect** (Mobile wallets via QR code)
+3. **Coinbase Wallet**
+4. **Rainbow Wallet**
+5. **Safe Wallet**
 
 ## Supported Networks
-- **Binance Smart Chain (BSC)** - Primary network
-- **BSC Testnet** - For development
+- **Arbitrum Sepolia** - Primary testnet
+- **Arbitrum One** - Production network
 - **Ethereum Mainnet**
-- **Polygon**
-- **Arbitrum**
+- **Other L2s** (coming soon)
 
 ## Configuration
 
@@ -33,7 +31,7 @@ Create a `.env.local` file with:
 ```env
 VITE_WALLETCONNECT_PROJECT_ID=your_project_id_here
 VITE_APP_NAME=Fylaro Finternet Finance
-VITE_DEFAULT_CHAIN_ID=56
+VITE_DEFAULT_CHAIN_ID=421614
 ```
 
 ### WalletConnect Project ID
@@ -48,11 +46,11 @@ VITE_DEFAULT_CHAIN_ID=56
 1. Click the "Connect Wallet" button in the navbar
 2. Select your preferred wallet from the modal
 3. Follow the wallet prompts to connect
-4. The system will automatically prompt to switch to BSC if needed
+4. The system will automatically prompt to switch to Arbitrum if needed
 
 ### Network Switching
-- If connected to the wrong network, a "Switch to BSC" button will appear
-- Click it to automatically switch to Binance Smart Chain
+- If connected to the wrong network, a "Switch to Arbitrum" button will appear
+- Click it to automatically switch to Arbitrum Sepolia (testnet) or Arbitrum One
 - Users can also manually switch networks in their wallet
 
 ### Disconnect Wallet
@@ -94,7 +92,7 @@ VITE_DEFAULT_CHAIN_ID=56
 
 ### Common Issues
 1. **Wallet not detected**: Ensure the wallet extension is installed and enabled
-2. **Wrong network**: Click "Switch to BSC" or manually switch in wallet
+2. **Wrong network**: Click "Switch to Arbitrum" or manually switch in wallet
 3. **Connection failed**: Check browser console for errors, try refreshing
 4. **Modal not opening**: Check for JavaScript errors in console
 

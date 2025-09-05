@@ -14,19 +14,19 @@ When attempting to connect a wallet (MetaMask, etc.), you see the error: "We can
 ### Solution 1: Check MetaMask Network
 1. Open MetaMask
 2. Click on the network dropdown (top of MetaMask)
-3. If you see "Hardhat Local" or "Localhost 8545" selected, switch to "Binance Smart Chain" or "Ethereum Mainnet"
-4. If BSC is not available, add it manually
+3. If you see "Hardhat Local" or "Localhost 8545" selected, switch to "Arbitrum Sepolia" or "Ethereum Mainnet"
+4. If Arbitrum is not available, add it manually
 
-### Solution 2: Add Binance Smart Chain to MetaMask
+### Solution 2: Add Arbitrum Sepolia to MetaMask
 1. Open MetaMask
 2. Click network dropdown
 3. Click "Add Network" or "Custom RPC"
 4. Enter these details:
-   - **Network Name:** Binance Smart Chain
-   - **RPC URL:** https://bsc-dataseed.binance.org/
-   - **Chain ID:** 56
-   - **Currency Symbol:** BNB
-   - **Block Explorer:** https://bscscan.com
+   - **Network Name:** Arbitrum Sepolia
+   - **RPC URL:** https://sepolia-rollup.arbitrum.io/rpc
+   - **Chain ID:** 421614
+   - **Currency Symbol:** ETH
+   - **Block Explorer:** https://sepolia.arbiscan.io
 
 ### Solution 3: Remove Hardhat Network
 1. Open MetaMask
@@ -54,7 +54,7 @@ After fixing:
 1. Open the application at http://localhost:8081/
 2. Click "Connect Wallet"
 3. Select MetaMask
-4. Should see BSC (Chain ID: 56) in the debug info
+4. Should see Arbitrum Sepolia (Chain ID: 421614) in the debug info
 5. No "Hardhat Local" errors should appear
 
 ## Prevention
@@ -70,8 +70,8 @@ Use the "🔧 Wallet Debug" button in the application to see:
 - Browser wallet detection
 
 Chain IDs:
-- Binance Smart Chain: 56
-- BSC Testnet: 97
+- Arbitrum Sepolia: 421614
+- Arbitrum One: 42161
 - Ethereum Mainnet: 1
 - Hardhat Local: 31337 (should not appear)
 
