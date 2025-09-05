@@ -49,9 +49,9 @@ fylaro/
 ##  Design System
 
 - **Dark Theme**: Arbitrum-inspired professional aesthetic
-- **Blue Accents**: Primary color (#2563eb) for highlights
+- **Blue Accents**: Primary color (#28A0F0) for highlights, matching Arbitrum brand
 - **Responsive Grid**: Mobile-first, adaptive layouts
-- **Semantic Tokens**: Consistent design system
+- **Semantic Tokens**: Consistent Layer 2 design system
 
 ##  Finternet Integration
 

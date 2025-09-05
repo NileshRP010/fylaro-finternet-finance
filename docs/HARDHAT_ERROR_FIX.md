@@ -17,7 +17,9 @@ When attempting to connect a wallet (MetaMask, etc.), you see the error: "We can
 3. If you see "Hardhat Local" or "Localhost 8545" selected, switch to "Arbitrum Sepolia" or "Ethereum Mainnet"
 4. If Arbitrum is not available, add it manually
 
-### Solution 2: Add Arbitrum Sepolia to MetaMask
+### Solution 2: Add Arbitrum Networks to MetaMask
+
+#### For Testnet (Arbitrum Sepolia)
 1. Open MetaMask
 2. Click network dropdown
 3. Click "Add Network" or "Custom RPC"
@@ -27,6 +29,15 @@ When attempting to connect a wallet (MetaMask, etc.), you see the error: "We can
    - **Chain ID:** 421614
    - **Currency Symbol:** ETH
    - **Block Explorer:** https://sepolia.arbiscan.io
+
+#### For Mainnet (Arbitrum One)
+   - **Network Name:** Arbitrum One
+   - **RPC URL:** https://arb1.arbitrum.io/rpc
+   - **Chain ID:** 42161
+   - **Currency Symbol:** ETH
+   - **Block Explorer:** https://arbiscan.io
+
+Note: Arbitrum offers much lower gas fees and faster finality compared to other networks while maintaining Ethereum-level security through its optimistic rollup technology.
 
 ### Solution 3: Remove Hardhat Network
 1. Open MetaMask

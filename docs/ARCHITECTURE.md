@@ -2,7 +2,7 @@
 
 ## System Overview
 
-Fylaro is built as a modern, scalable dApp that bridges traditional invoice financing with blockchain technology. The architecture follows microservices principles with clear separation of concerns.
+Fylaro is built as a modern, scalable dApp that bridges traditional invoice financing with blockchain technology, leveraging Arbitrum's Layer 2 infrastructure for fast and cost-efficient transactions while maintaining Ethereum's security guarantees. The architecture follows microservices principles with clear separation of concerns.
 
 ## Component Architecture
 
@@ -63,9 +63,10 @@ graph TB
   - `placeBid()`: Submit bid for auction-style sales
   - `acceptBid()`: Accept highest bid
 - **Features**:
-  - Escrow system for secure transactions
-  - Platform fee collection
-  - Automated bid management
+  - Escrow system for secure transactions on Arbitrum Layer 2
+  - Gas-optimized platform fee collection
+  - Fast finality for automated bid management
+  - Ultra-low transaction costs
 
 ### Settlement.sol
 - **Purpose**: Automated payment settlement system
