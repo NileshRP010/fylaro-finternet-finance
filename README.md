@@ -48,8 +48,8 @@ fylaro/
 
 ##  Design System
 
-- **Dark Theme**: Binance-inspired professional aesthetic
-- **Golden Accents**: Primary color (#F0B90B) for highlights
+- **Dark Theme**: Arbitrum-inspired professional aesthetic
+- **Blue Accents**: Primary color (#2563eb) for highlights
 - **Responsive Grid**: Mobile-first, adaptive layouts
 - **Semantic Tokens**: Consistent design system
 

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/layout/Navbar";
-import BinanceBlockchainAnimation from "@/components/animations/BinanceBlockchainAnimation";
+import ArbitrumBlockchainAnimation from "@/components/animations/ArbitrumBlockchainAnimation";
 import GlobalMapAnimation from "@/components/animations/GlobalMapAnimation";
 import ScrollTriggeredFintechIcons from "@/components/animations/ScrollTriggeredFintechIcons";
 import DigitalVaultAnimation from "@/components/animations/DigitalVaultAnimationClean";
@@ -94,7 +94,7 @@ const Index = () => {
       <section className="relative overflow-hidden gradient-hero min-h-[90vh] flex items-center">
         {/* Blockchain Animation Background */}
         <div className="absolute inset-0 z-0">
-          <BinanceBlockchainAnimation />
+          <ArbitrumBlockchainAnimation />
         </div>
 
         {/* Gradient Overlay for better text readability */}
@@ -284,24 +284,24 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-background via-background/95 to-secondary/20 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="w-full h-full opacity-60">
-            <BinanceBlockchainAnimation />
+            <ArbitrumBlockchainAnimation />
           </div>
         </div>
 
         <div className="relative z-10 container mx-auto px-6">
           <div className="text-center mb-16">
             <Badge className="mb-6 text-sm px-4 py-2 bg-yellow-500/10 text-yellow-400 border-yellow-500/30 backdrop-blur-sm">
-              Binance Smart Chain Powered
+              Powered by Arbitrum
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-white">
               Built on Enterprise-Grade
-              <span className="block text-gradient bg-gradient-to-r from-yellow-400 via-blue-400 to-green-400 bg-clip-text text-transparent">
-                Blockchain Infrastructure
+              <span className="block text-gradient bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+                Layer 2 Infrastructure
               </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Experience the speed, security, and scalability of Binance Smart
-              Chain with our advanced cross-chain interoperability powered by
+              Experience the speed, security, and scalability of Arbitrum's Layer 2
+              with our advanced cross-chain interoperability powered by
               Finternet technology.
             </p>
           </div>
@@ -320,8 +320,8 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Sub-3 second settlement times with 1M+ transactions per second
-                  capacity on Binance Smart Chain's optimized infrastructure.
+                  Ultra-fast settlement times with optimized transaction throughput
+                  on Arbitrum's Layer 2 infrastructure.
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-sm text-yellow-400/80">
                   <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
