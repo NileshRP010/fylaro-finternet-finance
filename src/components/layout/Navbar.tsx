@@ -7,19 +7,31 @@ import {
   Search,
   Sun,
   Moon,
-  AlertTriangle
+  AlertTriangle,
+  ChevronDown
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useWallet } from "@/hooks/useWallet";
+import { useLanguage } from "@/contexts/LanguageContext";
+import arbitrumIcon from "/logos/logo-symbol.svg";
+import arbitrumSepoliaIcon from "/logos/logo-symbol.svg";
 import { WalletConnectModal } from "@/components/features/WalletConnectModal";
 import SearchModal from "@/components/features/SearchModal";
 import LanguageSelector from "@/components/features/LanguageSelector";
+import NotificationsPopover from "@/components/features/NotificationsPopover";
 import { toast } from "sonner";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const { 
@@ -29,7 +41,10 @@ const Navbar = () => {
     disconnectWallet, 
     formatAddress,
     isOnArbitrum,
-    switchToArbitrum 
+    isOnArbitrumSepolia,
+    currentNetwork,
+    switchToArbitrum,
+    switchToArbitrumSepolia
   } = useWallet();
 
   // Keyboard shortcut for search (Ctrl+K or Cmd+K)
@@ -60,16 +75,16 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <Link to="/marketplace" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              Marketplace
+              {t('navbar.marketplace')}
             </Link>
             <Link to="/dashboard" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              Dashboard
+              {t('navbar.dashboard')}
             </Link>
             <Link to="/portfolio" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              Portfolio
+              {t('navbar.portfolio')}
             </Link>
             <Link to="/trading" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              Trading
+              {t('navbar.trading')}
             </Link>
           </div>
 
@@ -100,30 +115,42 @@ const Navbar = () => {
             <LanguageSelector />
 
             {/* Notifications */}
-            <Button variant="ghost" size="sm" className="relative navbar-button">
-              <Bell className="h-5 w-5" />
-              <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></div>
-            </Button>
+            <NotificationsPopover />
 
             {/* Wallet Connection */}
             {isConnected ? (
               <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-2">
-                  {!isOnArbitrum && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={switchToArbitrum}
-                      className="border-warning/30 text-warning hover:bg-warning/10"
-                    >
-                      <AlertTriangle className="h-3 w-3 mr-1" />
-                      Switch to Arbitrum
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="border-primary/30 text-foreground hover:bg-primary/10">
+                      <img 
+                        src={isOnArbitrum ? arbitrumIcon : arbitrumSepoliaIcon} 
+                        alt="Network" 
+                        className="w-5 h-5 mr-2" 
+                      />
+                      {currentNetwork}
+                      <ChevronDown className="h-4 w-4 ml-2" />
                     </Button>
-                  )}
-                  <Badge className={`${isOnArbitrum ? 'bg-success/10 text-success border-success/30' : 'bg-warning/10 text-warning border-warning/30'} hidden lg:flex`}>
-                    {isOnArbitrum ? 'Arbitrum Connected' : 'Wrong Network'}
-                  </Badge>
-                </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-[200px]">
+                    <DropdownMenuItem 
+                      className="flex items-center space-x-2 cursor-pointer" 
+                      onClick={switchToArbitrum}
+                    >
+                      <img src={arbitrumIcon} alt="Arbitrum" className="w-5 h-5" />
+                      <span>Arbitrum</span>
+                      {isOnArbitrum && <span className="ml-auto text-xs text-green-500">Connected</span>}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      className="flex items-center space-x-2 cursor-pointer"
+                      onClick={switchToArbitrumSepolia}
+                    >
+                      <img src={arbitrumSepoliaIcon} alt="Arbitrum Sepolia" className="w-5 h-5" />
+                      <span>Arbitrum Sepolia</span>
+                      {isOnArbitrumSepolia && <span className="ml-auto text-xs text-green-500">Connected</span>}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 <Button 
                   variant="outline" 
                   className="border-primary/30 text-foreground hover:bg-primary/10"
@@ -140,7 +167,7 @@ const Navbar = () => {
                 disabled={isConnecting}
               >
                 <Wallet className="h-4 w-4 mr-2" />
-                {isConnecting ? 'Connecting...' : 'Connect Wallet'}
+                {isConnecting ? t('navbar.connecting') : t('navbar.connectWallet')}
               </Button>
             )}
 

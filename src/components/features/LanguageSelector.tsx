@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -7,32 +7,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe, ChevronDown, Check } from "lucide-react";
-
-interface Language {
-  code: string;
-  name: string;
-  flag: string;
-}
-
-const languages: Language[] = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'zh', name: '中文', flag: '🇨🇳' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' },
-  { code: 'pt', name: 'Português', flag: '🇧🇷' },
-];
+import { useLanguage, languages } from '@/contexts/LanguageContext';
 
 const LanguageSelector: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>(languages[0]);
+  const { currentLanguage, changeLanguage } = useLanguage();
 
-  const handleLanguageChange = (language: Language) => {
-    setSelectedLanguage(language);
-    // Here you would typically integrate with your i18n library
-    // For example: i18n.changeLanguage(language.code);
-    console.log(`Language changed to: ${language.name}`);
+  const handleLanguageChange = (language: typeof languages[0]) => {
+    changeLanguage(language.code);
   };
 
   return (
@@ -40,7 +21,7 @@ const LanguageSelector: React.FC = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="hidden lg:flex navbar-button gap-2">
           <Globe className="h-4 w-4" />
-          <span className="text-sm font-medium">{selectedLanguage.code.toUpperCase()}</span>
+          <span className="text-sm font-medium">{currentLanguage.code.toUpperCase()}</span>
           <ChevronDown className="h-3 w-3" />
         </Button>
       </DropdownMenuTrigger>
@@ -53,7 +34,7 @@ const LanguageSelector: React.FC = () => {
           >
             <span className="text-lg">{language.flag}</span>
             <span className="flex-1">{language.name}</span>
-            {selectedLanguage.code === language.code && (
+            {currentLanguage.code === language.code && (
               <Check className="h-4 w-4 text-primary" />
             )}
           </DropdownMenuItem>

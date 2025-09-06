@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from 'wagmi';
-import { arbitrumSepolia } from '../lib/web3-config';
+import { arbitrumSepolia, supportedChains } from '../lib/web3-config';
 import { toast } from 'sonner';
+import { arbitrum } from 'wagmi/chains';
+
+declare global {
+  interface Window {
+    ethereum?: {
+      request: (args: { method: string; params?: any[] }) => Promise<any>;
+      on: (event: string, callback: (accounts: string[]) => void) => void;
+      removeListener: (event: string, callback: (accounts: string[]) => void) => void;
+    };
+  }
+}
 
 export interface WalletState {
   isConnected: boolean;
@@ -88,11 +99,19 @@ export const useWallet = () => {
 
   const switchToArbitrum = async () => {
     try {
-      await switchChain({ chainId: arbitrumSepolia.id });
-      toast.success('Switched to Arbitrum Sepolia');
+      await switchChain({ chainId: arbitrum.id });
     } catch (error) {
-      console.error('Failed to switch chain:', error);
-      toast.error('Failed to switch to Arbitrum Sepolia');
+      console.error('Failed to switch to Arbitrum:', error);
+      toast.error('Failed to switch to Arbitrum. Please try manually switching in your wallet.');
+    }
+  };
+
+  const switchToArbitrumSepolia = async () => {
+    try {
+      await switchChain({ chainId: arbitrumSepolia.id });
+    } catch (error) {
+      console.error('Failed to switch to Arbitrum Sepolia:', error);
+      toast.error('Failed to switch to Arbitrum Sepolia. Please try manually switching in your wallet.');
     }
   };
 
@@ -101,15 +120,20 @@ export const useWallet = () => {
     return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
   };
 
-  const isOnArbitrum = chainId === arbitrumSepolia.id;
+  const isOnArbitrum = chainId === arbitrum.id;
+  const isOnArbitrumSepolia = chainId === arbitrumSepolia.id;
+  const currentNetwork = isOnArbitrum ? 'Arbitrum' : isOnArbitrumSepolia ? 'Arbitrum Sepolia' : 'Unknown';
 
   return {
     ...walletState,
     connectWallet,
     disconnectWallet,
     switchToArbitrum,
+    switchToArbitrumSepolia,
     formatAddress,
     isOnArbitrum,
+    isOnArbitrumSepolia,
+    currentNetwork,
     connectors,
   };
 };

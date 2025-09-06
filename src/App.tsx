@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WagmiProvider } from "wagmi";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { config } from "./lib/web3-config";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import "@rainbow-me/rainbowkit/styles.css";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
@@ -27,11 +28,12 @@ const App = () => (
   <WagmiProvider config={config}>
     <QueryClientProvider client={queryClient}>
       <RainbowKitProvider>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -53,6 +55,7 @@ const App = () => (
             </BrowserRouter>
           </TooltipProvider>
         </ThemeProvider>
+        </LanguageProvider>
       </RainbowKitProvider>
     </QueryClientProvider>
   </WagmiProvider>

@@ -1,12 +1,13 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
-import { mainnet } from 'wagmi/chains';
-import { http } from 'viem';
 import { 
-  metaMaskWallet,
-  trustWallet,
+  metaMaskWallet, 
+  trustWallet, 
   coinbaseWallet,
+  rainbowWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { http } from 'viem';
+import { arbitrum } from 'wagmi/chains';
 
 // Get project ID from environment variables or use a default one for development
 const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || '2f5a2f12b7b96c78f1a47e8ae2c5ce9a';
@@ -28,21 +29,20 @@ export const arbitrumSepolia = {
 
 // Explicitly define chains to avoid any local network conflicts
 const productionChains = [
+  arbitrum,
   arbitrumSepolia,
-  mainnet,
 ] as const;
 
+const appName = import.meta.env.VITE_APP_NAME || 'Fylaro Finternet Finance';
+
 export const config = getDefaultConfig({
-  appName: import.meta.env.VITE_APP_NAME || 'Fylaro Finternet Finance',
+  appName,
   projectId,
   chains: productionChains,
   ssr: false,
-  batch: {
-    multicall: true,
-  },
   transports: {
     [421614]: http('https://sepolia-rollup.arbitrum.io/rpc'),
-    [1]: http(),
+    [42161]: http('https://arb1.arbitrum.io/rpc'),
   },
   wallets: [
     {
@@ -50,15 +50,33 @@ export const config = getDefaultConfig({
       wallets: [
         metaMaskWallet,
         trustWallet,
+        rainbowWallet,
+      ]
+    },
+    {
+      groupName: 'Other Options',
+      wallets: [
         coinbaseWallet,
         walletConnectWallet,
-      ],
-    },
-  ],
+      ]
+    }
+  ]
 });
 
 // Chain configurations for easy access
 export const supportedChains = {
+  arbitrum: {
+    id: 42161,
+    name: 'Arbitrum',
+    nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://arb1.arbitrum.io/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'Arbiscan', url: 'https://arbiscan.io' },
+    },
+    testnet: false,
+  },
   arbitrumSepolia: {
     id: 421614,
     name: 'Arbitrum Sepolia',

@@ -863,20 +863,174 @@ const PaymentTracker = () => {
             </div>
           </TabsContent>
 
-          {/* Other tab contents would filter the payments array */}
           <TabsContent value="pending">
-            <div className="text-center py-8 text-muted-foreground">
-              Pending payments view (filtered data)
+            <div className="grid gap-4">
+              {payments.filter(payment => payment.status === "Pending").map((payment) => (
+                <Card key={payment.id} className="gradient-card border-border">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <Building className="h-8 w-8 text-muted-foreground" />
+                        <div>
+                          <h3 className="font-semibold text-lg">{payment.company}</h3>
+                          <p className="text-sm text-muted-foreground">
+                            {payment.invoiceId} • {payment.paymentMethod}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-2xl font-bold">{formatAmount(payment.amount)}</p>
+                        <Badge className={getStatusColor(payment.status)}>
+                          {payment.status}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground">Due Date</p>
+                        <p className="font-medium">{payment.dueDate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Time Left</p>
+                        <p className="font-medium">{payment.daysUntilDue} days</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Last Update</p>
+                        <p className="font-medium">{payment.lastUpdate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Progress</p>
+                        <Progress 
+                          value={Math.max(0, Math.min(100, ((30 - payment.daysUntilDue) / 30) * 100))}
+                          className="mt-2"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-end space-x-2">
+                      <Button variant="outline" size="sm">Send Reminder</Button>
+                      <Button size="sm">View Details</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              {payments.filter(payment => payment.status === "Pending").length === 0 && (
+                <div className="text-center py-8 text-muted-foreground">
+                  No pending payments found
+                </div>
+              )}
             </div>
           </TabsContent>
+
           <TabsContent value="overdue">
-            <div className="text-center py-8 text-muted-foreground">
-              Overdue payments view (filtered data)
+            <div className="grid gap-4">
+              {payments.filter(payment => payment.status === "Overdue").map((payment) => (
+                <Card key={payment.id} className="gradient-card border-border">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <Building className="h-8 w-8 text-muted-foreground" />
+                        <div>
+                          <h3 className="font-semibold text-lg">{payment.company}</h3>
+                          <p className="text-sm text-muted-foreground">
+                            {payment.invoiceId} • {payment.paymentMethod}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-2xl font-bold">{formatAmount(payment.amount)}</p>
+                        <Badge className={getStatusColor(payment.status)}>
+                          {payment.status}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground">Due Date</p>
+                        <p className="font-medium">{payment.dueDate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Days Overdue</p>
+                        <p className="font-medium text-destructive">{Math.abs(payment.daysUntilDue)} days</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Last Update</p>
+                        <p className="font-medium">{payment.lastUpdate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Status</p>
+                        <p className="font-medium text-destructive">Payment Required Immediately</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-end space-x-2">
+                      <Button variant="outline" size="sm">Send Urgent Reminder</Button>
+                      <Button variant="destructive" size="sm">Escalate</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              {payments.filter(payment => payment.status === "Overdue").length === 0 && (
+                <div className="text-center py-8 text-muted-foreground">
+                  No overdue payments found
+                </div>
+              )}
             </div>
           </TabsContent>
+
           <TabsContent value="paid">
-            <div className="text-center py-8 text-muted-foreground">
-              Completed payments view (filtered data)
+            <div className="grid gap-4">
+              {payments.filter(payment => payment.status === "Paid").map((payment) => (
+                <Card key={payment.id} className="gradient-card border-border">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4">
+                        <Building className="h-8 w-8 text-muted-foreground" />
+                        <div>
+                          <h3 className="font-semibold text-lg">{payment.company}</h3>
+                          <p className="text-sm text-muted-foreground">
+                            {payment.invoiceId} • {payment.paymentMethod}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-2xl font-bold">{formatAmount(payment.amount)}</p>
+                        <Badge className={getStatusColor(payment.status)}>
+                          {payment.status}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground">Due Date</p>
+                        <p className="font-medium">{payment.dueDate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Paid Date</p>
+                        <p className="font-medium">{payment.paidDate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Last Update</p>
+                        <p className="font-medium">{payment.lastUpdate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Payment Method</p>
+                        <p className="font-medium">{payment.paymentMethod}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <div className="flex items-center space-x-2 text-success">
+                        <CheckCircle className="h-4 w-4" />
+                        <span className="text-sm">Payment completed successfully</span>
+                      </div>
+                      <Button variant="outline" size="sm">View Receipt</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              {payments.filter(payment => payment.status === "Paid").length === 0 && (
+                <div className="text-center py-8 text-muted-foreground">
+                  No completed payments found
+                </div>
+              )}
             </div>
           </TabsContent>
         </Tabs>

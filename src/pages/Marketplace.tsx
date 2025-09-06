@@ -27,7 +27,7 @@ import {
 
 const Marketplace = () => {
   const navigate = useNavigate();
-  const invoiceListings = [
+  const [invoiceListings, setInvoiceListings] = useState([
     {
       id: "INV-001",
       company: "TechFlow Solutions",
@@ -82,11 +82,12 @@ const Marketplace = () => {
       riskLevel: "Low",
       expectedReturn: 7.2,
       daysLeft: 28,
-      verified: true,
-    },
-  ];
-
-  const formatAmount = (amount: number) => {
+    verified: true,
+  },
+]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);  const formatAmount = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
@@ -325,20 +326,91 @@ const Marketplace = () => {
 
         {/* Load More */}
         <div className="text-center pt-6">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => {
-              toast({
-                title: "Loading More Listings",
-                description: "Fetching additional investment opportunities...",
-              });
-              // In a real app, this would load more data from the API
-              console.log("Loading more marketplace listings");
-            }}
-          >
-            Load More Listings
-          </Button>
+          {hasMore && (
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={async () => {
+                try {
+                  setLoading(true);
+                  // Simulating API call delay
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+                  
+                  // Load more dummy data
+                  const newInvoices = [
+                    {
+                      id: `INV-00${page + 3}`,
+                      company: "Tech Enterprise Ltd",
+                      amount: 95000,
+                      currency: "USD",
+                      dueDate: "2024-05-15",
+                      funded: 45,
+                      creditScore: 815,
+                      industry: "Technology",
+                      riskLevel: "Low",
+                      expectedReturn: 9.2,
+                      daysLeft: 30,
+                      verified: true,
+                    },
+                    {
+                      id: `INV-00${page + 4}`,
+                      company: "Global Logistics Co",
+                      amount: 78000,
+                      currency: "USD",
+                      dueDate: "2024-06-01",
+                      funded: 62,
+                      creditScore: 788,
+                      industry: "Transportation",
+                      riskLevel: "Medium",
+                      expectedReturn: 11.5,
+                      daysLeft: 45,
+                      verified: true,
+                    },
+                  ];
+                  
+                  setInvoiceListings(prev => [...prev, ...newInvoices]);
+                  setPage(p => p + 1);
+                  
+                  // If we've loaded enough items, set hasMore to false
+                  if (page >= 3) {
+                    setHasMore(false);
+                  }
+                  
+                  toast({
+                    title: "Listings Updated",
+                    description: "New investment opportunities loaded successfully.",
+                  });
+                } catch (error) {
+                  console.error('Error loading more listings:', error);
+                  toast({
+                    title: "Error",
+                    description: "Failed to load more listings. Please try again.",
+                    variant: "destructive",
+                  });
+                } finally {
+                  setLoading(false);
+                }
+              }}
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="flex items-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Loading...
+                </span>
+              ) : (
+                "Load More Listings"
+              )}
+            </Button>
+          )}
+          {!hasMore && (
+            <p className="text-muted-foreground mt-4">
+              You've reached the end of the listings
+            </p>
+          )}
         </div>
       </div>
     </DashboardLayout>

@@ -40,6 +40,14 @@ export const WalletConnectModal = ({ isOpen, onClose }: WalletConnectModalProps)
         return '🔵';
       case 'trust wallet':
         return '🛡️';
+      case 'rainbow':
+        return '🌈';
+      case 'rabby wallet':
+        return '🐰';
+      case 'ledger':
+        return '🔒';
+      case 'injected':
+        return '🔌';
       default:
         return '👛';
     }
@@ -54,14 +62,22 @@ export const WalletConnectModal = ({ isOpen, onClose }: WalletConnectModalProps)
       case 'coinbase wallet':
         return 'Secure wallet by Coinbase';
       case 'trust wallet':
-        return 'Secure wallet with Arbitrum support';
+        return 'Popular mobile wallet with Arbitrum support';
+      case 'rainbow':
+        return 'User-friendly Ethereum wallet';
+      case 'rabby wallet':
+        return 'Advanced features for DeFi users';
+      case 'ledger':
+        return 'Hardware wallet for maximum security';
+      case 'injected':
+        return 'Use an already installed wallet';
       default:
         return 'Connect with your preferred wallet';
     }
   };
 
   const isRecommended = (name: string) => {
-    return ['metamask', 'trust wallet'].includes(name.toLowerCase());
+    return ['metamask', 'trust wallet', 'rainbow'].includes(name.toLowerCase());
   };
 
   return (
