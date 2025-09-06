@@ -1,4 +1,4 @@
-# Fylaro - Invoice Financing on the Finternet
+# Fylaro - Invoice Financing on Arbitrum
 
 ##  Overview
 
