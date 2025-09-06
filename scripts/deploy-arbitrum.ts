@@ -1,5 +1,7 @@
 import { ethers } from "hardhat";
 import { verifyContract } from "../utils/verify";
+import fs from "fs";
+import path from "path";
 
 async function main() {
   console.log("Starting deployment to Arbitrum Sepolia...");
@@ -9,8 +11,8 @@ async function main() {
   console.log(`Deploying from account: ${deployer.address}`);
 
   // Check balance
-  const balance = await deployer.getBalance();
-  console.log(`Account balance: ${ethers.utils.formatEther(balance)} ETH`);
+  const balance = await ethers.provider.getBalance(deployer.address);
+  console.log(`Account balance: ${ethers.formatEther(balance)} ETH`);
 
   // Deploy InvoiceToken
   console.log("\nDeploying InvoiceToken...");
@@ -23,17 +25,18 @@ async function main() {
   });
 
   console.log("Waiting for InvoiceToken deployment...");
-  await invoiceToken.deployed();
-  console.log(`InvoiceToken deployed to: ${invoiceToken.address}`);
+  await invoiceToken.waitForDeployment();
+  const invoiceTokenAddress = await invoiceToken.getAddress();
+  console.log(`InvoiceToken deployed to: ${invoiceTokenAddress}`);
 
   // Wait for some L2 blocks for better state finality
   console.log("\nWaiting for block confirmations...");
-  await invoiceToken.deployTransaction.wait(5);
+  await invoiceToken.deploymentTransaction()?.wait(5);
 
   // Verify contract on Arbiscan
   console.log("\nVerifying contract on Arbiscan...");
   try {
-    await verifyContract(invoiceToken.address, [uri, feeRecipient]);
+    await verifyContract(invoiceTokenAddress, [uri, feeRecipient]);
     console.log("Contract verification successful");
   } catch (error) {
     console.log("Contract verification failed:", error);
@@ -41,7 +44,7 @@ async function main() {
 
   // Initialize contract
   console.log("\nInitializing contract...");
-  
+
   // Add deployer as verified issuer
   const verifyTx = await invoiceToken.addVerifiedIssuer(deployer.address);
   await verifyTx.wait(2);
@@ -54,7 +57,7 @@ async function main() {
 
   // Set verification fee
   const verificationFeeTx = await invoiceToken.updateVerificationFee(
-    ethers.utils.parseEther("0.001") // 0.001 ETH on Arbitrum
+    ethers.parseEther("0.001") // 0.001 ETH on Arbitrum
   );
   await verificationFeeTx.wait(2);
   console.log("Updated verification fee");
@@ -63,26 +66,42 @@ async function main() {
   console.log("\nDeployment Summary:");
   console.log("===================");
   console.log(`Network: Arbitrum Sepolia`);
-  console.log(`InvoiceToken: ${invoiceToken.address}`);
+  console.log(`InvoiceToken: ${invoiceTokenAddress}`);
   console.log(`Fee Recipient: ${feeRecipient}`);
   console.log(`Block Number: ${await ethers.provider.getBlockNumber()}`);
-  console.log(`Gas Price: ${ethers.utils.formatUnits(await ethers.provider.getGasPrice(), "gwei")} gwei`);
-  
+
+  try {
+    const gasPrice = await ethers.provider.getFeeData();
+    console.log(
+      `Gas Price: ${ethers.formatUnits(gasPrice.gasPrice || 0n, "gwei")} gwei`
+    );
+  } catch (e) {
+    console.log("Could not get gas price");
+  }
+
   // Save deployment info
   const deploymentInfo = {
     network: "arbitrum-sepolia",
     chainId: 421614,
-    invoiceToken: invoiceToken.address,
+    invoiceToken: invoiceTokenAddress,
     feeRecipient: feeRecipient,
     deployer: deployer.address,
     blockNumber: await ethers.provider.getBlockNumber(),
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   };
 
   // Write deployment info to file
-  const fs = require("fs");
-  const path = require("path");
-  const deploymentPath = path.join(__dirname, "../deployments/arbitrum-sepolia.json");
+  const deploymentPath = path.join(
+    process.cwd(),
+    "deployments/arbitrum-sepolia.json"
+  );
+
+  // Create deployments directory if it doesn't exist
+  const deploymentDir = path.dirname(deploymentPath);
+  if (!fs.existsSync(deploymentDir)) {
+    fs.mkdirSync(deploymentDir, { recursive: true });
+  }
+
   fs.writeFileSync(deploymentPath, JSON.stringify(deploymentInfo, null, 2));
   console.log(`\nDeployment info saved to: ${deploymentPath}`);
 }

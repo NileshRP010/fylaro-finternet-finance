@@ -8,7 +8,7 @@ import {
   Sun,
   Moon,
   AlertTriangle,
-  ChevronDown
+  ChevronDown,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -34,30 +34,30 @@ const Navbar = () => {
   const { t } = useLanguage();
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const { 
-    isConnected, 
-    address, 
-    isConnecting, 
-    disconnectWallet, 
+  const {
+    isConnected,
+    address,
+    isConnecting,
+    disconnectWallet,
     formatAddress,
     isOnArbitrum,
     isOnArbitrumSepolia,
     currentNetwork,
     switchToArbitrum,
-    switchToArbitrumSepolia
+    switchToArbitrumSepolia,
   } = useWallet();
 
   // Keyboard shortcut for search (Ctrl+K or Cmd+K)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
         event.preventDefault();
         setIsSearchModalOpen(true);
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
@@ -67,33 +67,49 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 rounded-lg overflow-hidden group-hover:scale-110 transition-smooth">
-              <img src="/src/assets/fylaro-logo-icon.png" alt="Fylaro Logo" className="w-full h-full object-cover" />
+              <img
+                src="/src/assets/fylaro-logo-icon.png"
+                alt="Fylaro Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-2xl font-bold text-foreground">Fylaro</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link to="/marketplace" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              {t('navbar.marketplace')}
+            <Link
+              to="/marketplace"
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              {t("navbar.marketplace")}
             </Link>
-            <Link to="/dashboard" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              {t('navbar.dashboard')}
+            <Link
+              to="/dashboard"
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              {t("navbar.dashboard")}
             </Link>
-            <Link to="/portfolio" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              {t('navbar.portfolio')}
+            <Link
+              to="/portfolio"
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              {t("navbar.portfolio")}
             </Link>
-            <Link to="/trading" className="text-muted-foreground hover:text-primary transition-colors font-medium">
-              {t('navbar.trading')}
+            <Link
+              to="/trading"
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              {t("navbar.trading")}
             </Link>
           </div>
 
           {/* Right Side Controls */}
           <div className="flex items-center space-x-4">
             {/* Search */}
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               className="hidden lg:flex navbar-button"
               onClick={() => setIsSearchModalOpen(true)}
               title="Search (Ctrl+K)"
@@ -102,13 +118,17 @@ const Navbar = () => {
             </Button>
 
             {/* Theme Toggle */}
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="navbar-button"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
 
             {/* Language Selector */}
@@ -122,37 +142,56 @@ const Navbar = () => {
               <div className="flex items-center space-x-3">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="border-primary/30 text-foreground hover:bg-primary/10">
-                      <img 
-                        src={isOnArbitrum ? arbitrumIcon : arbitrumSepoliaIcon} 
-                        alt="Network" 
-                        className="w-5 h-5 mr-2" 
+                    <Button
+                      variant="outline"
+                      className="border-primary/30 text-foreground hover:bg-primary/10"
+                    >
+                      <img
+                        src={isOnArbitrum ? arbitrumIcon : arbitrumSepoliaIcon}
+                        alt="Network"
+                        className="w-5 h-5 mr-2"
                       />
                       {currentNetwork}
                       <ChevronDown className="h-4 w-4 ml-2" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-[200px]">
-                    <DropdownMenuItem 
-                      className="flex items-center space-x-2 cursor-pointer" 
+                    <DropdownMenuItem
+                      className="flex items-center space-x-2 cursor-pointer"
                       onClick={switchToArbitrum}
                     >
-                      <img src={arbitrumIcon} alt="Arbitrum" className="w-5 h-5" />
+                      <img
+                        src={arbitrumIcon}
+                        alt="Arbitrum"
+                        className="w-5 h-5"
+                      />
                       <span>Arbitrum</span>
-                      {isOnArbitrum && <span className="ml-auto text-xs text-green-500">Connected</span>}
+                      {isOnArbitrum && (
+                        <span className="ml-auto text-xs text-green-500">
+                          Connected
+                        </span>
+                      )}
                     </DropdownMenuItem>
-                    <DropdownMenuItem 
+                    <DropdownMenuItem
                       className="flex items-center space-x-2 cursor-pointer"
                       onClick={switchToArbitrumSepolia}
                     >
-                      <img src={arbitrumSepoliaIcon} alt="Arbitrum Sepolia" className="w-5 h-5" />
+                      <img
+                        src={arbitrumSepoliaIcon}
+                        alt="Arbitrum Sepolia"
+                        className="w-5 h-5"
+                      />
                       <span>Arbitrum Sepolia</span>
-                      {isOnArbitrumSepolia && <span className="ml-auto text-xs text-green-500">Connected</span>}
+                      {isOnArbitrumSepolia && (
+                        <span className="ml-auto text-xs text-green-500">
+                          Connected
+                        </span>
+                      )}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-primary/30 text-foreground hover:bg-primary/10"
                   onClick={disconnectWallet}
                 >
@@ -161,18 +200,24 @@ const Navbar = () => {
                 </Button>
               </div>
             ) : (
-              <Button 
+              <Button
                 className="glow"
                 onClick={() => setIsWalletModalOpen(true)}
                 disabled={isConnecting}
               >
                 <Wallet className="h-4 w-4 mr-2" />
-                {isConnecting ? t('navbar.connecting') : t('navbar.connectWallet')}
+                {isConnecting
+                  ? t("navbar.connecting")
+                  : t("navbar.connectWallet")}
               </Button>
             )}
 
             {/* Mobile Menu */}
-            <Button variant="ghost" size="sm" className="lg:hidden navbar-button">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="lg:hidden navbar-button"
+            >
               <Menu className="h-5 w-5" />
             </Button>
           </div>
@@ -180,15 +225,15 @@ const Navbar = () => {
       </div>
 
       {/* Search Modal */}
-      <SearchModal 
-        isOpen={isSearchModalOpen} 
-        onClose={() => setIsSearchModalOpen(false)} 
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
       />
 
       {/* Wallet Connect Modal */}
-      <WalletConnectModal 
-        isOpen={isWalletModalOpen} 
-        onClose={() => setIsWalletModalOpen(false)} 
+      <WalletConnectModal
+        isOpen={isWalletModalOpen}
+        onClose={() => setIsWalletModalOpen(false)}
       />
     </nav>
   );

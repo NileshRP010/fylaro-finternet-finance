@@ -1,0 +1,9 @@
+{
+  "network": "arbitrum-sepolia",
+  "chainId": 421614,
+  "invoiceToken": "0x6b949c2Bf86E6fc891DD3E85A9d138B00780De03",
+  "feeRecipient": "0xF0bB47E1BDdF7c8ca1bC3e84a84741898D51BF38",
+  "deployer": "0xF0bB47E1BDdF7c8ca1bC3e84a84741898D51BF38",
+  "blockNumber": 191475827,
+  "timestamp": "2025-09-06T11:48:27.218Z"
+}

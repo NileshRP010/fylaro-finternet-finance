@@ -16,6 +16,9 @@ import Portfolio from "./pages/Portfolio";
 import PaymentTracker from "./pages/PaymentTracker";
 import Trading from "./pages/Trading";
 import UploadInvoice from "./pages/UploadInvoice";
+import CreateInvoice from "./pages/CreateInvoice";
+import MyPortfolio from "./pages/MyPortfolio";
+import InvoiceMarketplace from "./pages/InvoiceMarketplace";
 import InvestmentDetails from "./pages/InvestmentDetails";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
@@ -34,27 +37,33 @@ const App = () => (
               <Toaster />
               <Sonner />
               <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/marketplace" element={<Marketplace />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/payments" element={<PaymentTracker />} />
-                <Route path="/trading" element={<Trading />} />
-                <Route path="/upload" element={<UploadInvoice />} />
-                <Route
-                  path="/investment/:invoiceId"
-                  element={<InvestmentDetails />}
-                />
-                <Route path="/analytics" element={<Analytics />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/help" element={<Help />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
-        </ThemeProvider>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/marketplace" element={<Marketplace />} />
+                  <Route
+                    path="/invoice-marketplace"
+                    element={<InvoiceMarketplace />}
+                  />
+                  <Route path="/portfolio" element={<Portfolio />} />
+                  <Route path="/my-portfolio" element={<MyPortfolio />} />
+                  <Route path="/payments" element={<PaymentTracker />} />
+                  <Route path="/trading" element={<Trading />} />
+                  <Route path="/upload" element={<UploadInvoice />} />
+                  <Route path="/create-invoice" element={<CreateInvoice />} />
+                  <Route
+                    path="/investment/:invoiceId"
+                    element={<InvestmentDetails />}
+                  />
+                  <Route path="/analytics" element={<Analytics />} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="/help" element={<Help />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </BrowserRouter>
+            </TooltipProvider>
+          </ThemeProvider>
         </LanguageProvider>
       </RainbowKitProvider>
     </QueryClientProvider>
