@@ -1,4 +1,3 @@
-// Smart contract for invoice tokenization with fractional ownership
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
@@ -7,8 +6,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "@arbitrum/nitro-contracts/src/precompiles/ArbSys.sol";
-import "@arbitrum/nitro-contracts/src/precompiles/ArbGasInfo.sol";
 
 /**
  * @title InvoiceToken
@@ -75,7 +72,10 @@ contract InvoiceToken is ERC1155, Ownable, ReentrancyGuard, Pausable {
         _;
     }
     
-    constructor(string memory uri, address _feeRecipient) ERC1155(uri) {
+    // Constructor changed to accept only feeRecipient to match FylaroDeployer usage:
+    // new InvoiceToken(treasuryWallet)
+    constructor(address _feeRecipient) ERC1155("") {
+        require(_feeRecipient != address(0), "Invalid fee recipient");
         feeRecipient = _feeRecipient;
     }
     
@@ -128,7 +128,9 @@ contract InvoiceToken is ERC1155, Ownable, ReentrancyGuard, Pausable {
         _mint(msg.sender, tokenId, _totalShares, "");
         
         // Transfer verification fee
-        payable(feeRecipient).transfer(msg.value);
+        if (msg.value > 0) {
+            payable(feeRecipient).transfer(msg.value);
+        }
         
         emit InvoiceTokenized(tokenId, _invoiceId, msg.sender, _totalValue, _totalShares, _dueDate);
     }
@@ -251,10 +253,13 @@ contract InvoiceToken is ERC1155, Ownable, ReentrancyGuard, Pausable {
     
     /**
      * @dev Get voting results
+     * Note: this returns approvalVotes (totalVotes mapping) and totalVotes mapping as second value.
+     * If you want an aggregate of all votes (approval + rejections), you'll need to track total votes separately.
      */
     function getVotingResults(uint256 tokenId) external view returns (uint256 approvalVotes, uint256 totalSharesVoted) {
-        Invoice memory invoice = invoices[tokenId];
-        return (totalVotes[tokenId], totalSharesVoted);
+        approvalVotes = totalVotes[tokenId];
+        totalSharesVoted = totalVotes[tokenId];
+        return (approvalVotes, totalSharesVoted);
     }
     
     /**
@@ -277,12 +282,16 @@ contract InvoiceToken is ERC1155, Ownable, ReentrancyGuard, Pausable {
      */
     function _updateCreditScore(address user, bool positive, uint256 amount, uint256 totalValue) internal {
         uint256 currentScore = creditScores[user];
+        if (currentScore == 0) {
+            currentScore = 650; // default starting score if unset
+        }
         uint256 impact = (amount * 100) / totalValue; // Percentage impact
         
         if (positive) {
             creditScores[user] = _min(850, currentScore + impact);
         } else {
-            creditScores[user] = _max(300, currentScore - impact);
+            uint256 newScore = currentScore > impact ? currentScore - impact : 0;
+            creditScores[user] = _max(300, newScore);
         }
         
         emit CreditScoreUpdated(user, creditScores[user]);
@@ -364,6 +373,4 @@ contract InvoiceToken is ERC1155, Ownable, ReentrancyGuard, Pausable {
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC1155) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
-}
-    
 }
