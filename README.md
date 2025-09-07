@@ -34,7 +34,7 @@ Fylaro is a revolutionary invoice financing marketplace built on the principles 
 
 Fylaro demonstrates the transformative potential of the **Finternet** by creating a unified, interoperable platform for invoice financing. By leveraging the core principles of tokenization, unified ledger technology, and global accessibility, Fylaro bridges traditional finance with next-generation financial infrastructure.
 
-### Mission Statement
+### Statement
 
 To democratize access to invoice financing globally by creating a transparent, efficient, and accessible marketplace where businesses can instantly convert receivables to working capital, and investors can access verified, diversified financial assets on **Arbitrum Ecosystem**.
 
