@@ -5,23 +5,27 @@
 **CRITICAL:** All environment files containing sensitive information have been removed from git tracking and are now properly ignored.
 
 ### 🚫 Files Removed from Git:
+
 - `.env`
-- `.env.deployment` 
+- `.env.deployment`
 - `backend/.env`
 - `frontend-deploy/.env.production`
 
 ### ✅ What's Safe in Git:
+
 - `.env.example` files (templates without real keys)
 - `.env.production.template` (template for deployment)
 
 ## 🔧 For Deployment:
 
 1. **Copy the template:**
+
    ```bash
    cp frontend-deploy/.env.production.template frontend-deploy/.env.production
    ```
 
 2. **Fill in your real values:**
+
    - API URLs
    - Pinata API keys
    - Any other sensitive configuration
@@ -33,12 +37,14 @@
 ## 🛡️ Security Best Practices:
 
 ✅ **DO:**
+
 - Use environment variables in your hosting platform
 - Keep sensitive keys in secure vaults
 - Use `.env.example` files as templates
 - Review what files are tracked: `git ls-files | Select-String "\.env"`
 
 ❌ **DON'T:**
+
 - Commit any file with real API keys
 - Share `.env` files in chat/email
 - Hardcode secrets in source code
