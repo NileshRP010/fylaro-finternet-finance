@@ -271,7 +271,7 @@ npm run deploy:contracts:mainnet
 - **Backend API**: http://localhost:3001
 - **API Documentation**: http://localhost:3001/docs
 
-## � Smart Contracts
+## Smart Contracts
 
 Fylaro's smart contract ecosystem is deployed on **Arbitrum Sepolia** testnet with the following verified contracts:
 
