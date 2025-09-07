@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_API_BASE_URL": "@vite_api_base_url",
+    "VITE_WEBSOCKET_URL": "@vite_websocket_url",
+    "VITE_CHAIN_ID": "421614",
+    "VITE_NETWORK_NAME": "arbitrum-sepolia",
+    "VITE_INVOICE_TOKEN_ADDRESS": "0x1FA52B372eC9675337D0c8ddF97CCEcC2c8Ba2B3",
+    "VITE_MARKETPLACE_ADDRESS": "0x1478380b06BB0497305ac1F416c9b6207492e17f",
+    "VITE_SETTLEMENT_ADDRESS": "0xB4F8AE7eB2bCc9F36979b113179e24016eaDAa81",
+    "VITE_PAYMENT_TRACKER_ADDRESS": "0xEb93737095142Ccd381AEfd4C2D6ac26dDf64510",
+    "VITE_CREDIT_SCORING_ADDRESS": "0x195B9955240efc8c3942e894Ce27b77a43b82182",
+    "VITE_RISK_ASSESSMENT_ADDRESS": "0xdF2dFca56d0243BAaD855144CAfB20F112ad829b",
+    "VITE_UNIFIED_LEDGER_ADDRESS": "0x167691366329bAC1bBB13EB8e81d3F593F370Fd2",
+    "VITE_LIQUIDITY_POOL_ADDRESS": "0x3006b0Bb5204E54d2A7AB930Ef048aC9Cbd67006",
+    "VITE_FINTERNET_GATEWAY_ADDRESS": "0x0f940213D9fF8464dc5947a8662978B9BDD69916",
+    "VITE_FYLARO_DEPLOYER_ADDRESS": "0xA017b9211eCaf0acB9746179fD239E34E0C47B8c",
+    "VITE_ENABLE_TRADING": "true",
+    "VITE_ENABLE_WEBSOCKET": "true",
+    "VITE_ENABLE_NOTIFICATIONS": "true"
+  }
+}
