@@ -13,7 +13,7 @@ Fylaro is a revolutionary invoice financing marketplace built on the principles 
 [![Network](https://img.shields.io/badge/Network-Arbitrum-orange)](https://arbitrum.io/)
 [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
-[Live Demo](http://localhost:8081) | [Documentation](./docs/) | [Contributing](#contributing)
+[Live Demo](https://fylaro-arbitrum.vercel.app/) | [Documentation](./docs/) | [Contributing](#contributing)
 
 </div>
 
