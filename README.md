@@ -2,13 +2,13 @@
 
 <div align="center">
 
-![Fylaro Logo](./src/assets/fylaro-logo-icon.png)
+<img src="./src/assets/fylaro-logo-icon.png" alt="Fylaro Logo" width="120" height="120">
 
 **Transforming invoice financing through blockchain technology and Finternet principles**
 
 [![Built with](https://img.shields.io/badge/Built%20with-React%20%2B%20TypeScript-blue)](https://reactjs.org/)
 [![Smart Contracts](https://img.shields.io/badge/Smart%20Contracts-Solidity-363636)](https://soliditylang.org/)
-[![Network](https://img.shields.io/badge/Network-Arbitrum-orange)](https://arbitrum.io/)
+[![Network](ttps://img.shields.io/badge/Network-Arbitrum-orange)](https://arbitrum.io/)
 [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
 [🚀 Live Demo](http://localhost:8081) | [📚 Documentation](./docs/) | [🤝 Contributing](#contributing)
