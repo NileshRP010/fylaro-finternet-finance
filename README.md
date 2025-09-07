@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Fylaro Logo](.src/assets/fylaro-logo-icon.png)
+![Fylaro Logo](./src/assets/fylaro-logo-icon.png)
 
 **Transforming invoice financing through blockchain technology and Finternet principles**
 
