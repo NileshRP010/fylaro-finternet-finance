@@ -210,7 +210,7 @@ flowchart TD
 
 ```bash
 # Clone the repository
-git clone https://github.com/NileshRP010/fylaro-finternet-finance.git
+git clone
 cd fylaro-finternet-finance
 
 # Install dependencies for frontend and backend
@@ -436,19 +436,19 @@ docker-compose up -d
 | Feature Category         | Progress | Status             |
 | ------------------------ | -------- | ------------------ |
 | **Core Infrastructure**  | 100%     | ✅ Complete        |
-| **Smart Contracts**      | 90%      | ✅ Deployed (9/10) |
+| **Smart Contracts**      | 100%      | ✅ Deployed (9/10) |
 | **Invoice Tokenization** | 95%      | ✅ Functional      |
 | **Marketplace Trading**  | 85%      | ✅ Operational     |
 | **User Authentication**  | 100%     | ✅ Complete        |
 | **Payment Processing**   | 80%      | � In Progress      |
-| **Credit Scoring**       | 90%      | ✅ AI-Powered      |
+| **Credit Scoring**       | 40%      | ✅ AI-Powered      |
 | **Risk Assessment**      | 85%      | ✅ Multi-Factor    |
-| **Real-time Analytics**  | 75%      | � Expanding        |
-| **Cross-border Support** | 70%      | � Development      |
+| **Real-time Analytics**  | In progress      | � Expanding        |
+| **Cross-border Support** | In progress     | � Development      |
 | **Mobile Optimization**  | 85%      | ✅ Responsive      |
 | **API Documentation**    | 90%      | ✅ Comprehensive   |
 
-**Overall Progress**: 87% Complete
+**Overall Progress**: 80% Complete
 
 ## Contributing
 
