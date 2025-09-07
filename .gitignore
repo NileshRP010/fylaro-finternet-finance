@@ -12,6 +12,22 @@ dist
 dist-ssr
 *.local
 
+# Environment files - CRITICAL SECURITY
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+.env.deployment
+backend/.env
+backend/.env.local
+backend/.env.*.local
+frontend-deploy/.env
+frontend-deploy/.env.local
+frontend-deploy/.env.*.local
+frontend-deploy/.env.production
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
