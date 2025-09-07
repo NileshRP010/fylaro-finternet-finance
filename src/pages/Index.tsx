@@ -300,8 +300,8 @@ const Index = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Experience the speed, security, and scalability of Arbitrum's Layer 2
-              with our advanced cross-chain interoperability powered by
+              Experience the speed, security, and scalability of Arbitrum's
+              Layer 2 with our advanced cross-chain interoperability powered by
               Finternet technology.
             </p>
           </div>
@@ -320,8 +320,8 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Ultra-fast settlement times with optimized transaction throughput
-                  on Arbitrum's Layer 2 infrastructure.
+                  Ultra-fast settlement times with optimized transaction
+                  throughput on Arbitrum's Layer 2 infrastructure.
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-sm text-yellow-400/80">
                   <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
@@ -663,24 +663,36 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-3 text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/about")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     About Us
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/careers")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     Careers
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/press")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     Press
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/contact")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     Contact
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -689,24 +701,36 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-3 text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/help-center")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     Help Center
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/api-docs")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     API Docs
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/security")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     Security
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <button
+                    onClick={() => navigate("/legal")}
+                    className="hover:text-primary transition-colors text-left"
+                  >
                     Legal
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
