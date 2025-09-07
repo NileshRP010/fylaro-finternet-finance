@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fylaro - Arbitrum-inspired Design System */
+
+@layer base {
+  :root {
+    /* Ultra Dark Professional Theme */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 45 93% 58%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 120 60% 50%;
+    --success-foreground: 0 0% 4%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 4%;
+
+    --border: 0 0% 12%;
+    --input: 0 0% 8%;
+    --ring: 45 93% 58%;
+
+    --radius: 0.5rem;
+
+    /* Custom Fylaro Variables */
+    --primary-glow: 45 100% 65%;
+    --chart-green: 120 60% 50%;
+    --chart-red: 0 75% 60%;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(0 0% 8%));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--background)), hsl(0 0% 6%));
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Arbitrum Brand Colors */
+    --arbitrum-blue: #28A0F0;
+    --arbitrum-blue-dark: #1B6CA8;
+    --arbitrum-black: #0B0E11;
+    --arbitrum-gray: #2B3139;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 48 96% 53%;
+    --primary-foreground: 240 6% 6%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 48 96% 53%;
+    --accent-foreground: 240 6% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 48 96% 53%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Enhanced canvas rendering for animations */
+  canvas {
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+  }
+  
+  /* Performance optimizations for animations */
+  .blockchain-animation-container {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .professional-grid {
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .highlight-border {
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  /* RainbowKit custom styling */
+  [data-rk] {
+    --rk-colors-accentColor: hsl(var(--primary));
+    --rk-colors-accentColorForeground: hsl(var(--primary-foreground));
+    --rk-colors-actionButtonBorder: hsl(var(--border));
+    --rk-colors-actionButtonBorderMobile: hsl(var(--border));
+    --rk-colors-actionButtonSecondaryBackground: hsl(var(--secondary));
+    --rk-colors-closeButton: hsl(var(--muted-foreground));
+    --rk-colors-closeButtonBackground: hsl(var(--secondary));
+    --rk-colors-connectButtonBackground: hsl(var(--primary));
+    --rk-colors-connectButtonBackgroundError: hsl(var(--destructive));
+    --rk-colors-connectButtonInnerBackground: hsl(var(--primary));
+    --rk-colors-connectButtonText: hsl(var(--primary-foreground));
+    --rk-colors-connectButtonTextError: hsl(var(--destructive-foreground));
+    --rk-colors-error: hsl(var(--destructive));
+    --rk-colors-generalBorder: hsl(var(--border));
+    --rk-colors-generalBorderDim: hsl(var(--border));
+    --rk-colors-menuItemBackground: hsl(var(--secondary));
+    --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.5);
+    --rk-colors-modalBackground: hsl(var(--background));
+    --rk-colors-modalBorder: hsl(var(--border));
+    --rk-colors-modalText: hsl(var(--foreground));
+    --rk-colors-modalTextDim: hsl(var(--muted-foreground));
+    --rk-colors-modalTextSecondary: hsl(var(--muted-foreground));
+    --rk-colors-profileAction: hsl(var(--secondary));
+    --rk-colors-profileActionHover: hsl(var(--accent));
+    --rk-colors-profileForeground: hsl(var(--card));
+    --rk-colors-selectedOptionBorder: hsl(var(--primary));
+    --rk-colors-standby: hsl(var(--muted-foreground));
+  }
+
+  /* Custom navbar button styling */
+  .navbar-button {
+    color: hsl(var(--muted-foreground));
+    transition: all 0.2s ease;
+  }
+
+  .navbar-button:hover {
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--accent) / 0.5);
+  }
+
+  .navbar-button svg {
+    transition: all 0.2s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .navbar-button:hover svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: inherit;
+  }
+
+  /* Ensure all button icons remain visible */
+  button svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  button:hover svg,
+  button:focus svg,
+  button:active svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Prevent any CSS that might hide icons */
+  nav button svg {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Custom Animations for Fintech Icons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(240, 185, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(240, 185, 11, 0.5);
+  }
+}
+
+/* Animation utility classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animate-delay-600 {
+  animation-delay: 600ms;
+}
