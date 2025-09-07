@@ -246,20 +246,20 @@ npm run deploy:contracts:mainnet
 
 Fylaro's smart contract ecosystem is deployed on **Arbitrum Sepolia** testnet with the following verified contracts:
 
-| Contract              | Address                                      | Status      | Purpose                                        |
-| --------------------- | -------------------------------------------- | ----------- | ---------------------------------------------- |
-| **FylaroDeployer**    | `N/A`                                        | ❌ Failed   | Contract too large (needs optimization)        |
-| **InvoiceToken**      | `0x1FA52B372eC9675337D0c8ddF97CCEcC2c8Ba2B3` | ✅ Deployed | ERC-1155 NFT contract for tokenized invoices   |
-| **UnifiedLedger**     | `0x167691366329bAC1bBB13EB8e81d3F593F370Fd2` | ✅ Deployed | Central ledger for all financial records       |
-| **Marketplace**       | `0x1478380b06BB0497305ac1F416c9b6207492e17f` | ✅ Deployed | Secondary trading platform for invoice tokens  |
-| **LiquidityPool**     | `0x3006b0Bb5204E54d2A7AB930Ef048aC9Cbd67006` | ✅ Deployed | Automated market maker for liquidity provision |
-| **PaymentTracker**    | `0xEb93737095142Ccd381AEfd4C2D6ac26dDf64510` | ✅ Deployed | Real-time payment settlement tracking          |
-| **CreditScoring**     | `0x195B9955240efc8c3942e894Ce27b77a43b82182` | ✅ Deployed | AI-powered credit risk assessment              |
-| **RiskAssessment**    | `0xdF2dFca56d0243BAaD855144CAfB20F112ad829b` | ✅ Deployed | Comprehensive risk analysis framework          |
-| **Settlement**        | `0xB4F8AE7eB2bCc9F36979b113179e24016eaDAa81` | ✅ Deployed | Automated payment settlement system            |
-| **FinternentGateway** | `0x0f940213D9fF8464dc5947a8662978B9BDD69916` | ✅ Deployed | Gateway for finternet interoperability         |
+| Contract              | Address                                      | Status      | Purpose                                         |
+| --------------------- | -------------------------------------------- | ----------- | ----------------------------------------------- |
+| **FylaroDeployer**    | `0xA017b9211eCaf0acB9746179fD239E34E0C47B8c` | ✅ Deployed | Main factory contract for system initialization |
+| **InvoiceToken**      | `0x1FA52B372eC9675337D0c8ddF97CCEcC2c8Ba2B3` | ✅ Deployed | ERC-1155 NFT contract for tokenized invoices    |
+| **UnifiedLedger**     | `0x167691366329bAC1bBB13EB8e81d3F593F370Fd2` | ✅ Deployed | Central ledger for all financial records        |
+| **Marketplace**       | `0x1478380b06BB0497305ac1F416c9b6207492e17f` | ✅ Deployed | Secondary trading platform for invoice tokens   |
+| **LiquidityPool**     | `0x3006b0Bb5204E54d2A7AB930Ef048aC9Cbd67006` | ✅ Deployed | Automated market maker for liquidity provision  |
+| **PaymentTracker**    | `0xEb93737095142Ccd381AEfd4C2D6ac26dDf64510` | ✅ Deployed | Real-time payment settlement tracking           |
+| **CreditScoring**     | `0x195B9955240efc8c3942e894Ce27b77a43b82182` | ✅ Deployed | AI-powered credit risk assessment               |
+| **RiskAssessment**    | `0xdF2dFca56d0243BAaD855144CAfB20F112ad829b` | ✅ Deployed | Comprehensive risk analysis framework           |
+| **Settlement**        | `0xB4F8AE7eB2bCc9F36979b113179e24016eaDAa81` | ✅ Deployed | Automated payment settlement system             |
+| **FinternentGateway** | `0x0f940213D9fF8464dc5947a8662978B9BDD69916` | ✅ Deployed | Gateway for finternet interoperability          |
 
-**Deployment Success Rate**: 9/10 contracts (90% deployment success)
+**Deployment Success Rate**: 10/10 contracts (100% deployment success)
 
 ### Contract Interactions
 
