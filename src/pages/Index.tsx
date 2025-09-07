@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 import Navbar from "@/components/layout/Navbar";
 import ArbitrumBlockchainAnimation from "@/components/animations/ArbitrumBlockchainAnimation";
 import GlobalMapAnimation from "@/components/animations/GlobalMapAnimation";
@@ -125,7 +126,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 glow h-auto backdrop-blur-sm bg-primary/90 hover:bg-primary shadow-2xl"
+                  className="text-lg px-8 py-4 glow h-auto backdrop-blur-sm bg-primary/90 hover:bg-primary hover:scale-105 shadow-2xl transition-all duration-300"
                   onClick={() => navigate("/trading")}
                 >
                   Start Trading Invoices
@@ -134,7 +135,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-4 h-auto border-primary/30 text-white hover:bg-primary/10 backdrop-blur-sm shadow-xl"
+                  className="text-lg px-8 py-4 h-auto border-primary/50 text-white hover:bg-primary hover:text-primary-foreground hover:border-primary hover:scale-105 backdrop-blur-sm shadow-xl transition-all duration-300"
                   onClick={() => navigate("/marketplace")}
                 >
                   Explore Marketplace
@@ -153,9 +154,11 @@ const Index = () => {
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl gradient-primary mb-4 shadow-lg">
                       <stat.icon className="h-7 w-7 text-primary-foreground" />
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold mb-2 text-foreground">
-                      {stat.value}
-                    </div>
+                    <AnimatedCounter
+                      value={stat.value}
+                      className="text-3xl lg:text-4xl font-bold mb-2 text-foreground"
+                      duration={2500}
+                    />
                     <div className="text-sm text-muted-foreground mb-1">
                       {stat.label}
                     </div>
@@ -577,7 +580,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 glow h-auto"
+                  className="text-lg px-8 py-4 glow h-auto hover:scale-105 transition-all duration-300"
                   onClick={() => navigate("/upload")}
                 >
                   <Banknote className="mr-3 h-6 w-6" />
@@ -586,7 +589,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-4 h-auto border-primary/30 text-foreground hover:bg-primary/10"
+                  className="text-lg px-8 py-4 h-auto border-primary/50 text-white hover:bg-primary hover:text-primary-foreground hover:border-primary hover:scale-105 transition-all duration-300"
                   onClick={() => navigate("/marketplace")}
                 >
                   <Award className="mr-3 h-6 w-6" />
