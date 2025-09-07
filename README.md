@@ -542,6 +542,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Conclusion
 
-Fylaro demonstrates that the Finternet vision is not just theoretical—it's implementable today. By focusing on invoice financing as a use case, we show how tokenization, unified ledgers, and global interoperability can transform a traditional financial service into something that serves users better, costs less, and works seamlessly across borders.
+Fylaro demonstrates that the Finternet vision is not just theoretical—it's implementable today with the help of the **Arbitrum Infrastructure**. By focusing on invoice financing as a use case, we show how tokenization, unified ledgers, and global interoperability can transform a traditional financial service into something that serves users better, costs less, and works seamlessly across borders.
 
-The future of finance is not about replacing existing systems but about creating a unified layer that makes all financial services work together as one coherent, global system. Fylaro is a step toward that future.
+The future of finance is not about replacing existing systems but about creating a unified layer that makes all financial services work together as one coherent, global system. Fylaro is a step toward that future with the help of **Arbitrum Ecosystem**.
