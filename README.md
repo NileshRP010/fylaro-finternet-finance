@@ -487,16 +487,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-<div align="center">
-
-**Built with love by the Fylaro Team**
-
-[Website](https://fylaro.com) • [Documentation](./docs/) • [API](./docs/API_DOCUMENTATION.md) • [Contracts](./contracts/)
-
-</div>
-
----
-
 ## Future Fylaro Vision
 
 ### Phase 1: Tokenization (Current)
