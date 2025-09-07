@@ -4,67 +4,69 @@
 
 <img src="./src/assets/fylaro-logo-icon.png" alt="Fylaro Logo" width="120" height="120">
 
-**Transforming invoice financing through blockchain technology and Finternet principles**
+**Transforming invoice financing through blockchain technology and Finter- **API Documentation\*\*: http://localhost:3001/docs
+
+## Smart Contracts principles\*\*
 
 [![Built with](https://img.shields.io/badge/Built%20with-React%20%2B%20TypeScript-blue)](https://reactjs.org/)
 [![Smart Contracts](https://img.shields.io/badge/Smart%20Contracts-Solidity-363636)](https://soliditylang.org/)
 [![Network](https://img.shields.io/badge/Network-Arbitrum-orange)](https://arbitrum.io/)
 [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
-[Live Demo](http://localhost:8081) | [📚 Documentation](./docs/) | [Contributing](#contributing)
+[Live Demo](http://localhost:8081) | [Documentation](./docs/) | [Contributing](#contributing)
 
 </div>
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
-- [🌟 Key Features](#-key-features)
-- [🏗️ Architecture](#️-architecture)
-- [🛠️ Technology Stack](#️-technology-stack)
-- [🚀 Quick Start](#-quick-start)
-- [📖 Documentation](#-documentation)
-- [🧪 Testing](#-testing)
-- [🚀 Deployment](#-deployment)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Technology Stack](#technology-stack)
+- [Quick Start](#quick-start)
+- [Documentation](#documentation)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 
 Fylaro demonstrates the transformative potential of the **Finternet** by creating a unified, interoperable platform for invoice financing. By leveraging the core principles of tokenization, unified ledger technology, and global accessibility, Fylaro bridges traditional finance with next-generation financial infrastructure.
 
-### 🎯 Mission Statement
+### Mission Statement
 
 To democratize access to invoice financing globally by creating a transparent, efficient, and accessible marketplace where businesses can instantly convert receivables to working capital, and investors can access verified, diversified financial assets.
 
-## 🌟 Key Features
+## Key Features
 
-### 👔 For Businesses
+### For Businesses
 
-- **🪙 Invoice Tokenization**: Transform invoices into cryptographically verified ERC-1155 NFTs
-- **🔒 Automated KYC & Fraud Detection**: Robust AI-powered verification system
-- **📊 Fair Credit Scoring**: Transparent rating based on verifiable on-chain and off-chain data
-- **📱 Real-time Payment Tracking**: Monitor settlement status with WebSocket notifications
-- **🌍 Global Investor Access**: Connect with institutional and retail investors worldwide
-- **⚡ Instant Liquidity**: Get funded in minutes, not weeks
+- **Invoice Tokenization**: Transform invoices into cryptographically verified ERC-1155 NFTs
+- **Automated KYC & Fraud Detection**: Robust AI-powered verification system
+- **Fair Credit Scoring**: Transparent rating based on verifiable on-chain and off-chain data
+- **Real-time Payment Tracking**: Monitor settlement status with WebSocket notifications
+- **Global Investor Access**: Connect with institutional and retail investors worldwide
+- **Instant Liquidity**: Get funded in minutes, not weeks
 
-### 💰 For Investors
+### For Investors
 
-- **📈 Diversified Portfolio**: Invest in verified invoice assets with fractional ownership
-- **🔍 Risk Assessment Tools**: Comprehensive analytics and AI-powered scoring
-- **🔄 Secondary Trading**: Trade invoice tokens for liquidity on automated order book
-- **⚙️ Automated Settlement**: Seamless payment processing via smart contracts
-- **📊 Real-time Analytics**: Track performance and returns with live dashboards
-- **🛡️ Risk Management**: Advanced diversification and portfolio optimization tools
+- **Diversified Portfolio**: Invest in verified invoice assets with fractional ownership
+- **Risk Assessment Tools**: Comprehensive analytics and AI-powered scoring
+- **Secondary Trading**: Trade invoice tokens for liquidity on automated order book
+- **Automated Settlement**: Seamless payment processing via smart contracts
+- **Real-time Analytics**: Track performance and returns with live dashboards
+- **Risk Management**: Advanced diversification and portfolio optimization tools
 
-### 🏛️ Platform Features
+### Platform Features
 
-- **🔗 Unified Ledger**: Cross-border asset transfer and settlement
-- **🌐 IPFS Storage**: Decentralized, encrypted document storage
-- **🔄 WebSocket Integration**: Real-time updates and notifications
-- **👥 Role-Based Access**: Granular permissions and emergency controls
-- **📋 Regulatory Compliance**: Built-in compliance frameworks for multiple jurisdictions
+- **Unified Ledger**: Cross-border asset transfer and settlement
+- **IPFS Storage**: Decentralized, encrypted document storage
+- **WebSocket Integration**: Real-time updates and notifications
+- **Role-Based Access**: Granular permissions and emergency controls
+- **Regulatory Compliance**: Built-in compliance frameworks for multiple jurisdictions
 
-## 🏗️ Architecture
+## Architecture
 
 Fylaro follows a modern microservices architecture with clear separation of concerns across frontend, backend, blockchain, and storage layers.
 
@@ -115,7 +117,7 @@ graph TB
     ORDER --> WS
 ```
 
-### 🔄 Core Workflows
+### Core Workflows
 
 1. **Invoice Tokenization Flow**
 
@@ -128,7 +130,7 @@ graph TB
 3. **Trading Flow**
    - Order Placement → Order Matching → Trade Execution → Settlement → Portfolio Update
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 
@@ -166,7 +168,7 @@ graph TB
 - **Monitoring**: Contract events + API monitoring
 - **Documentation**: Markdown + Mermaid diagrams
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -286,7 +288,7 @@ const listingTx = await marketplace.listInvoice(tokenId, price, {
 });
 ```
 
-## 🔧 API Endpoints
+## API Endpoints
 
 ### Authentication
 
@@ -321,7 +323,7 @@ GET  /api/analytics/market       # Market statistics
 GET  /api/analytics/risk         # Risk assessment data
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Smart Contract Tests
 
@@ -359,7 +361,7 @@ npm run test:integration
 npm run test:e2e
 ```
 
-## 🚢 Deployment
+## Deployment
 
 ### Smart Contracts
 
@@ -400,7 +402,7 @@ npm run backend:start
 docker-compose up -d
 ```
 
-## 🔍 Feature Implementation Status
+## Feature Implementation Status
 
 | Feature Category         | Progress | Status             |
 | ------------------------ | -------- | ------------------ |
@@ -409,17 +411,17 @@ docker-compose up -d
 | **Invoice Tokenization** | 95%      | ✅ Functional      |
 | **Marketplace Trading**  | 85%      | ✅ Operational     |
 | **User Authentication**  | 100%     | ✅ Complete        |
-| **Payment Processing**   | 80%      | 🔄 In Progress     |
+| **Payment Processing**   | 80%      | � In Progress      |
 | **Credit Scoring**       | 90%      | ✅ AI-Powered      |
 | **Risk Assessment**      | 85%      | ✅ Multi-Factor    |
-| **Real-time Analytics**  | 75%      | 🔄 Expanding       |
-| **Cross-border Support** | 70%      | 🔄 Development     |
+| **Real-time Analytics**  | 75%      | � Expanding        |
+| **Cross-border Support** | 70%      | � Development      |
 | **Mobile Optimization**  | 85%      | ✅ Responsive      |
 | **API Documentation**    | 90%      | ✅ Comprehensive   |
 
 **Overall Progress**: 87% Complete
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork the repository**
 2. **Create feature branch**: `git checkout -b feature/amazing-feature`
@@ -435,18 +437,18 @@ docker-compose up -d
 - Update documentation
 - Ensure code coverage >80%
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## Support
 
 - **Documentation**: [docs/](./docs/)
 - **Issues**: [GitHub Issues](https://github.com/NileshRP010/fylaro-finternet-finance/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/NileshRP010/fylaro-finternet-finance/discussions)
 - **Email**: support@fylaro.com
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Arbitrum** for Layer 2 scaling solution
 - **OpenZeppelin** for secure smart contract libraries
@@ -458,7 +460,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Built with ❤️ by the Fylaro Team**
+**Built with love by the Fylaro Team**
 
 [Website](https://fylaro.com) • [Documentation](./docs/) • [API](./docs/API_DOCUMENTATION.md) • [Contracts](./contracts/)
 
