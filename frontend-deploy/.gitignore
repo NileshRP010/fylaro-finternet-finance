@@ -71,6 +71,11 @@ jspm_packages/
 # Netlify
 .netlify/
 
-# Local development
+# Environment files - SECURITY CRITICAL
 .env
 .env.local
+.env.development
+.env.test
+.env.production
+.env.deployment
+.env.*.local
