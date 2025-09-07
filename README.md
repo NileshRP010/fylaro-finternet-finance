@@ -4,9 +4,9 @@
 
 <img src="./src/assets/fylaro-logo-icon.png" alt="Fylaro Logo" width="120" height="120">
 
-**Transforming invoice financing through blockchain technology and Finter- **API Documentation\*\*: http://localhost:3001/docs
+Fylaro is a revolutionary invoice financing marketplace built on the principles of the Finternet on Arbitrum, leveraging tokenization and the Unified Ledger to connect businesses seeking working capital with global investors.
 
-## Smart Contracts principles\*\*
+## Smart Contracts principles
 
 [![Built with](https://img.shields.io/badge/Built%20with-React%20%2B%20TypeScript-blue)](https://reactjs.org/)
 [![Smart Contracts](https://img.shields.io/badge/Smart%20Contracts-Solidity-363636)](https://soliditylang.org/)
