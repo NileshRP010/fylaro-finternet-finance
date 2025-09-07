@@ -458,14 +458,6 @@ docker-compose up -d
 4. **Push to branch**: `git push origin feature/amazing-feature`
 5. **Open Pull Request**
 
-### Development Guidelines
-
-- Follow TypeScript strict mode
-- Write comprehensive tests
-- Use semantic commit messages
-- Update documentation
-- Ensure code coverage >80%
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
