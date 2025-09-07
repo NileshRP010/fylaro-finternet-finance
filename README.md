@@ -36,7 +36,7 @@ Fylaro demonstrates the transformative potential of the **Finternet** by creatin
 
 ### Mission Statement
 
-To democratize access to invoice financing globally by creating a transparent, efficient, and accessible marketplace where businesses can instantly convert receivables to working capital, and investors can access verified, diversified financial assets.
+To democratize access to invoice financing globally by creating a transparent, efficient, and accessible marketplace where businesses can instantly convert receivables to working capital, and investors can access verified, diversified financial assets on **Arbitrum Ecosystem**.
 
 ## Key Features
 
@@ -71,50 +71,79 @@ To democratize access to invoice financing globally by creating a transparent, e
 Fylaro follows a modern microservices architecture with clear separation of concerns across frontend, backend, blockchain, and storage layers.
 
 ```mermaid
-graph TB
-    subgraph "Frontend Layer"
-        UI[React + TypeScript UI]
-        W3[Web3 Integration]
-        WS[WebSocket Client]
+flowchart TD
+    %% Styling
+    classDef frontend fill:#42b883,color:#000,stroke:#42b883
+    classDef api fill:#60a5fa,color:#000,stroke:#60a5fa
+    classDef app fill:#f97316,color:#fff,stroke:#f97316
+    classDef db fill:#fbbf24,color:#000,stroke:#fbbf24
+    classDef bc fill:#8b5cf6,color:#fff,stroke:#8b5cf6
+    classDef storage fill:#84cc16,color:#000,stroke:#84cc16
+    
+    subgraph Frontend["Frontend Layer"]
+        direction TB
+        F1["React + Wagmi"]:::frontend
+        F2["RainbowKit UI"]:::frontend
+        F3["WebSocket Client"]:::frontend
     end
-
-    subgraph "Backend Services"
-        API[Express.js API]
-        AUTH[JWT Authentication]
-        KYC[KYC/Verification Service]
-        CREDIT[AI Credit Scoring]
-        FRAUD[Fraud Detection ML]
-        ORDER[Order Matching Engine]
+    
+    subgraph API["API Gateway"]
+        direction TB
+        G1["Express.js"]:::api
+        G2["Auth Middleware"]:::api
+        G3["Rate Limiting"]:::api
     end
-
-    subgraph "Blockchain Layer (Arbitrum)"
-        IT[InvoiceToken Contract]
-        MP[Marketplace Contract]
-        UL[UnifiedLedger Contract]
-        ST[Settlement Contract]
-        PT[PaymentTracker Contract]
-        LP[LiquidityPool Contract]
-        CS[CreditScoring Contract]
-        RA[RiskAssessment Contract]
+    
+    subgraph App["Application Services"]
+        direction TB
+        S1["InvoiceService"]:::app
+        S2["MarketplaceService"]:::app
+        S3["AnalyticsService"]:::app
+        S4["SettlementService"]:::app
     end
-
-    subgraph "Storage & External"
-        IPFS[IPFS + Pinata]
-        DB[(MongoDB/PostgreSQL)]
-        CACHE[(Redis Cache)]
-        ORACLE[Chainlink Oracles]
+    
+    subgraph DB["Database Layer"]
+        direction TB
+        D1["MongoDB"]:::db
+        D2["PostgreSQL"]:::db
+        D3["Redis Cache"]:::db
     end
-
-    UI --> API
-    UI --> WS
-    W3 --> IT
-    W3 --> MP
-    API --> DB
-    API --> CACHE
-    API --> IPFS
-    IT --> IPFS
-    MP --> ORACLE
-    ORDER --> WS
+    
+    subgraph BC["Blockchain Layer"]
+        direction TB
+        B1["Smart Contracts"]:::bc
+        B2["Event Listeners"]:::bc
+    end
+    
+    subgraph Storage["Decentralized Storage"]
+        direction TB
+        ST1["IPFS + Pinata"]:::storage
+    end
+    
+    %% Connections
+    F1 --> G1
+    F2 --> G1
+    F3 --> G1
+    
+    G1 --> S1
+    G1 --> S2
+    G1 --> S3
+    G1 --> S4
+    
+    S1 --> D1
+    S2 --> D2
+    S3 --> D2
+    S4 --> D1
+    
+    S1 --> B1
+    S2 --> B1
+    S4 --> B1
+    
+    B1 --> B2
+    B2 --> S4
+    
+    S1 --> ST1
+    ST1 --> D1
 ```
 
 ### Core Workflows
