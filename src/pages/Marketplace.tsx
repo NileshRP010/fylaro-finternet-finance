@@ -26,9 +26,41 @@ import {
   Target,
 } from "lucide-react";
 
+interface InvoiceListing {
+  id: string;
+  company: string;
+  amount: number;
+  currency: string;
+  dueDate: string;
+  funded: number;
+  creditScore: number;
+  industry: string;
+  riskLevel: string;
+  expectedReturn: number;
+  daysLeft: number;
+  verified: boolean;
+}
+
 const Marketplace = () => {
   const navigate = useNavigate();
-  const [invoiceListings, setInvoiceListings] = useState([
+
+  const handleInvestNow = (invoice: InvoiceListing) => {
+    toast({
+      title: "Investment Initiated",
+      description: `Starting investment process for ${
+        invoice.company
+      } - $${invoice.amount.toLocaleString()}`,
+    });
+    // Navigate to investment details with specific invoice data
+    navigate(`/investment/${invoice.id}`);
+  };
+
+  const handleViewDetails = (invoice: InvoiceListing) => {
+    // Navigate to investment details for viewing
+    navigate(`/investment/${invoice.id}`);
+  };
+
+  const [invoiceListings, setInvoiceListings] = useState<InvoiceListing[]>([
     {
       id: "INV-001",
       company: "TechFlow Solutions",
@@ -302,7 +334,7 @@ const Marketplace = () => {
                 <div className="flex space-x-2 pt-2">
                   <Button
                     className="flex-1 glow group-hover:scale-105 transition-smooth"
-                    onClick={() => navigate("/investment-details")}
+                    onClick={() => handleInvestNow(invoice)}
                   >
                     <Target className="h-4 w-4 mr-2" />
                     Invest Now
@@ -310,7 +342,7 @@ const Marketplace = () => {
                   <Button
                     variant="outline"
                     className="flex-1 border-primary/30 hover:bg-primary/10"
-                    onClick={() => navigate("/investment-details")}
+                    onClick={() => handleViewDetails(invoice)}
                   >
                     View Details
                   </Button>
